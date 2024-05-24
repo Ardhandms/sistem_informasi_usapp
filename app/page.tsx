@@ -3,7 +3,7 @@ import Login from "./login/page";
 
 export default function Home() {
   return (
-    <main className="mx-auto items-center justify-center p-24">
+    <main className="mx-auto items-center justify-center">
       <Login />
     </main>
   );

@@ -1,109 +1,70 @@
-import React from "react";
-import Footer from "../components/Footer";
-import HeaderPresensi from "../components/header/HeaderPresensi";
-
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import React from 'react'
+import Footer from '../components/Footer'
+import HeaderPresensi from '../components/header/HeaderPresensi'
 
 function Presensi() {
   return (
-    <section className="mx-auto items-center justify-center font-medium bg-white max-w-[400px] mt-[-50px]">
-      <div>
+    <>
+      <section className="font-medium bg-white mt-[-5px] pb-20">
         <HeaderPresensi />
-        <div className="flex gap-2.5 justify-center px-4 py-2 mt-2 text-sm font-semibold text-white bg-green-600">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/4aa4760aa4493a210d0b41cea672a367a62493d2a228510a3183e6f7c68781b8?apiKey=f3e3f045e13e442ba14deaa80ea6e9f2&"
-            alt="Main banner image"
-            className="shrink-0 aspect-[0.84] w-[43px]"
-          />
-          <p className="my-auto">Pengisian Presensi Mata Kuliah</p>
-        </div>
-        <form className="flex flex-col items-center mt-9 w-full px-5">
-          <label className="sr-only">Mata Kuliah</label>
-          <section className="flex gap-5 justify-between py-3 pr-3.5 pl-1.5 w-full text-base text-center rounded-md border border-solid bg-zinc-100 border-neutral-400 text-stone-400">
-            <p id="subject">Mata Kuliah</p>
-            <DropdownMenu>
-              <DropdownMenuTrigger>"Open"</DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuLabel>Mata Kuliah</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>Jaringan Komputer</DropdownMenuItem>
-                <DropdownMenuItem>Sistem Informasi</DropdownMenuItem>
-                <DropdownMenuItem>Kemananan Informasi</DropdownMenuItem>
-                <DropdownMenuItem>Analisa Numerik</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </section>
-          <label className="sr-only">Pertemuan</label>
-          <section className="flex gap-5 justify-between py-3 pr-3.5 pl-1.5 mt-2.5 w-full text-base text-center rounded-md border border-solid bg-zinc-100 border-neutral-400 text-stone-400">
-            <p id="meeting">Pertemuan</p>
-            <DropdownMenu>
-              <DropdownMenuTrigger>"Open"</DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuLabel>Pertemuan</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>Pertemuan 1</DropdownMenuItem>
-                <DropdownMenuItem>Pertemuan 2</DropdownMenuItem>
-                <DropdownMenuItem>Pertemuan 3</DropdownMenuItem>
-                <DropdownMenuItem>Pertemuan 4</DropdownMenuItem>
-                <DropdownMenuItem>Pertemuan 5</DropdownMenuItem>
-                <DropdownMenuItem>Pertemuan 6</DropdownMenuItem>
-                <DropdownMenuItem>Pertemuan 7</DropdownMenuItem>
-                <DropdownMenuItem>
-                  Pertemuan 8 (Ulangan Tengah Semester)
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </section>
-          <label className="flex gap-5 justify-between py-3 pr-3.5 pl-1.5 mt-2.5 w-full text-base text-center">
-            <input
-              className="w-full justify-center py-3 pr-5 pl-1.5 mt-2.5 text-base text-start rounded-md border border-solid bg-zinc-100 border-neutral-400 text-stone-800"
-              id="materi"
-              type="text"
-              placeholder="Materi Perkuliahan"
-            />
-          </label>
-          <label className="sr-only">Metode Perkuliahan</label>
-          <section className="flex gap-5 justify-between py-3 pr-3.5 pl-1.5 mt-2.5 w-full text-base text-center rounded-md border border-solid bg-zinc-100 border-neutral-400 text-stone-400">
-            <p id="lecture_method">Metode Perkuliahan</p>
-            <DropdownMenu>
-              <DropdownMenuTrigger>"Open"</DropdownMenuTrigger>
-              <DropdownMenuContent>
-                <DropdownMenuLabel>Metode Perkuliahan</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>Tatap Muka</DropdownMenuItem>
-                <DropdownMenuItem>Tatap Maya/Online</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </section>
-          <label className="sr-only">Upload Bukti Perkuliahan</label>
-          <section className="flex gap-5 justify-between py-2 pr-2.5 pl-1.5 mt-2.5 w-full text-base text-center rounded-md border border-solid bg-zinc-100 border-neutral-400 text-stone-200">
-            <p id="upload_evidence" className="my-auto">
-              Upload Bukti Perkuliahan
-            </p>
+        <div className="px-4 space-y-8">
+          <div className="flex gap-2.5 justify-center px-4 py-2 mt-3 text-sm font-semibold text-white bg-green-600">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/3515565e0f6b9a847d35f647736013c1f3e3b1fae9c975690dca6e46092eb259?apiKey=f3e3f045e13e442ba14deaa80ea6e9f2&"
-              alt="Upload icon"
-              className="shrink-0 w-6 aspect-square"
+              loading="lazy"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/a0503741e408572c8052a29497c5e89e9e93601e52fefb58819b579afab9d73e?apiKey=f3e3f045e13e442ba14deaa80ea6e9f2&"
+              alt="Reminder icon"
+              className="shrink-0 w-11 aspect-[0.86]"
             />
-          </section>
-          <button
-            type="submit"
-            className="w-[165px] justify-center items-center px-16 py-2 mt-9 max-w-full text-sm font-semibold text-center text-white whitespace-nowrap bg-green-600 rounded-md shadow-sm"
-          >
-            Kirim
-          </button>
-        </form>
-        <Footer />
-      </div>
-    </section>
-  );
+            <div className="my-auto">Pengisian presensi mata kuliah</div>
+          </div>
+          <div className="space-y-2">
+            <select
+              id="countries"
+              className="bg-gray-50 border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            >
+              <option selected>Mata Kuliah</option>
+              <option value="CA">Canada</option>
+            </select>
+            <select
+              id="countries"
+              className="bg-gray-50 border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            >
+              <option selected>Pertemuan</option>
+              <option value="CA">Canada</option>
+            </select>
+            <input
+              type="text"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              placeholder="Materi Perkuliahan"
+              required
+            />
+            <select
+              id="countries"
+              className="bg-gray-50 border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            >
+              <option selected>Metode Perkuliahan</option>
+              <option value="CA">Canada</option>
+            </select>
+            <div className="border-2 border-dashed rounded-lg aspect-video bg-muted">
+              <label className="w-full h-full flex flex-col justify-center items-center gap-1 text-gray-400 text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 16C13.6569 16 15 14.6569 15 13C15 11.3431 13.6569 10 12 10C10.3431 10 9 11.3431 9 13C9 14.6569 10.3431 16 12 16Z" stroke="#9CA3AF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M3 16.8V9.2C3 8.0799 3 7.51984 3.21799 7.09202C3.40973 6.71569 3.71569 6.40973 4.09202 6.21799C4.51984 6 5.0799 6 6.2 6H7.25464C7.37758 6 7.43905 6 7.49576 5.9935C7.79166 5.95961 8.05705 5.79559 8.21969 5.54609C8.25086 5.49827 8.27836 5.44328 8.33333 5.33333C8.44329 5.11342 8.49827 5.00346 8.56062 4.90782C8.8859 4.40882 9.41668 4.08078 10.0085 4.01299C10.1219 4 10.2448 4 10.4907 4H13.5093C13.7552 4 13.8781 4 13.9915 4.01299C14.5833 4.08078 15.1141 4.40882 15.4394 4.90782C15.5017 5.00345 15.5567 5.11345 15.6667 5.33333C15.7216 5.44329 15.7491 5.49827 15.7803 5.54609C15.943 5.79559 16.2083 5.95961 16.5042 5.9935C16.561 6 16.6224 6 16.7454 6H17.8C18.9201 6 19.4802 6 19.908 6.21799C20.2843 6.40973 20.5903 6.71569 20.782 7.09202C21 7.51984 21 8.0799 21 9.2V16.8C21 17.9201 21 18.4802 20.782 18.908C20.5903 19.2843 20.2843 19.5903 19.908 19.782C19.4802 20 18.9201 20 17.8 20H6.2C5.0799 20 4.51984 20 4.09202 19.782C3.71569 19.5903 3.40973 19.2843 3.21799 18.908C3 18.4802 3 17.9201 3 16.8Z" stroke="#9CA3AF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                <p>Upload bukti perkuliahan</p>
+              </label>
+            </div>
+            <div className="pt-4">
+              <button className="w-full px-5 py-2 text-white bg-green-600 rounded-md shadow-sm text-sm">
+                Kirim
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <Footer />
+    </>
+  )
 }
 
-export default Presensi;
+export default Presensi

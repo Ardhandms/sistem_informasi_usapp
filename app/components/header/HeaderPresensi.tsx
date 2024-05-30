@@ -2,22 +2,26 @@ import React from "react";
 
 function HeaderPresensi() {
   return (
-    <section className="mx-auto items-center justify-center font-medium bg-white max-w-[400px] mt-[-50px]">
-      <header className="flex gap-5 justify-between self-stretch px-8 py-12 w-full bg-green-600 rounded-3xl">
-        <div className="flex flex-col self-start whitespace-nowrap mt-12">
-          <p className="text-base text-lime-300">Presensi</p>
-          <h1 className="mt-2.5 text-2xl font-semibold text-white">
-            ARDHAN <br /> DIMAS <br /> Nuryadin
-          </h1>
+    <header className="flex flex-col self-stretch pt-2 w-full bg-green-600 rounded-b-3xl">
+      <div className="p-8 grid grid-cols-2 gap-4">
+        <div className="">
+          <div className="text-base text-lime-300">Presensi</div>
+          <div className="text-2xl font-semibold uppercase">
+            Salman Miqdad
+          </div>
         </div>
-        <div className="flex flex-col text-sm font-medium text-lime-300 mt-12">
-          <p>Periode Akademik</p>
-          <p className="mt-2 text-xl text-white">2023/2024</p>
-          <p className="mt-3">Jurusan</p>
-          <p className="text-xs text-white">Informatika | 227006025</p>
+        <div className="flex z-10 flex-col self-center mt-0 text-sm text-lime-300">
+          <div>
+            <h4>Periode Akademik</h4>
+            <p className="text-lg text-white">2023/2024</p>
+          </div>
+          <div>
+            <h4 className="mt-2">Jurusan</h4>
+            <p className="text-xs text-white">Informatika | 227006009</p>
+          </div>
         </div>
-      </header>
-    </section>
+      </div>
+    </header>
   );
 }
 

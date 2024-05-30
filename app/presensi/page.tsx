@@ -63,7 +63,7 @@ function Presensi() {
           </section>
           <label className="flex gap-5 justify-between py-3 pr-3.5 pl-1.5 mt-2.5 w-full text-base text-center">
             <input
-              className="w-full justify-center py-3 pr-5 pl-1.5 mt-2.5 text-base text-center rounded-md border border-solid bg-zinc-100 border-neutral-400 text-stone-800"
+              className="w-full justify-center py-3 pr-5 pl-1.5 mt-2.5 text-base text-start rounded-md border border-solid bg-zinc-100 border-neutral-400 text-stone-800"
               id="materi"
               type="text"
               placeholder="Materi Perkuliahan"

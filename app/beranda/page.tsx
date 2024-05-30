@@ -4,42 +4,54 @@ import Footer from "../components/Footer";
 
 function Beranda() {
   return (
-    <section className="mx-auto items-center justify-center font-medium bg-white max-w-[400px] mt-[-50px]">
-      <header className="flex flex-col self-stretch pt-12 pb-6 w-full bg-green-600 rounded-none">
-        <div className="flex z-10 flex-col self-end whitespace-nowrap w-[69px]">
-          <img
-            loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/ac9ad0bd580de7f455b8910b550a236a7d1100ecbdba9924386126591e3ebfe2?apiKey=f3e3f045e13e442ba14deaa80ea6e9f2&"
-            alt=""
-            className="self-end aspect-square w-[41px]"
-          />
-          <div className="mt-7 text-sm text-lime-300">IPK</div>
-          <div className="mt-6 text-3xl text-white">-.--</div>
-        </div>
-        <div className="flex flex-col px-4 py-px mt-0 w-full">
-          <div className="text-base text-lime-300">Selamat Datang</div>
-          <div className="flex flex-col mt-1.5 max-w-full text-2xl font-semibold text-white whitespace-nowrap w-[100px]">
-            <div>
-              {" "}
-              SALMAN <br /> MIQDAD{" "}
-            </div>
+    <section className="mx-auto items-center justify-center font-medium bg-white max-w-[380px] mt-[-5px]">
+      <header className="flex flex-col self-stretch pt-2 pb-6 w-full bg-green-600 rounded-none">
+        <div className="flex z-10 flex-col self-end whitespace-nowrap">
+          <div className="p-1">
             <img
               loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/30b82e7711a2ff73eb21a72609260ffbbb566100df1534caa6d5041bb3ce06bf?apiKey=f3e3f045e13e442ba14deaa80ea6e9f2&"
-              alt="Student profile picture"
-              className="mt-4 w-full aspect-[0.68]"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/ac9ad0bd580de7f455b8910b550a236a7d1100ecbdba9924386126591e3ebfe2?apiKey=f3e3f045e13e442ba14deaa80ea6e9f2&"
+              alt=""
+              className="self-end aspect-square w-[35px]"
             />
           </div>
-          <div className="flex z-10 flex-col self-center mt-0 text-sm text-lime-300">
-            <div>Periode Akademik</div>
-            <div className="mt-2 text-xl text-white">2023/2024</div>
-            <div className="mt-3">Jengjang Akademik</div>
-            <div className="mt-1 text-xs text-white">()</div>
+        </div>
+        <div className="flex flex-col px-4 py-px mt-0 w-full">
+          <div className="w-full flex justify-between gap-4">
+            <div>
+              <div className="text-base text-lime-300">Selamat Datang</div>
+              <div className="flex flex-col mt-1.5 max-w-full text-2xl font-semibold text-white whitespace-nowrap w-[100px]">
+                <div>
+                  {" "}
+                  SALMAN <br /> MIQDAD{" "}
+                </div>
+              </div>
+            </div>
+            <div>
+              <div className="mt-7 text-sm text-lime-300">IPK</div>
+              <div className="mt-6 text-3xl text-white">-.--</div>
+            </div>
           </div>
-          <div className="flex flex-col self-end mt-6">
-            <div className="text-sm text-lime-300">Dosen Wali</div>
-            <div className="mt-2 text-xl text-white">
-              Dr. Ir. Aradea, S.T M.T.
+          <div className="flex gap-6 mt-4">
+            <div className="w-[100px]">
+              <img
+                loading="lazy"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/30b82e7711a2ff73eb21a72609260ffbbb566100df1534caa6d5041bb3ce06bf?apiKey=f3e3f045e13e442ba14deaa80ea6e9f2&"
+                alt="Student profile picture"
+                className="w-full aspect-[0.68]"
+              />
+            </div>
+            <div className="flex z-10 flex-col self-center mt-0 text-sm text-lime-300">
+              <div>Periode Akademik</div>
+              <div className="mt-2 text-xl text-white">2023/2024</div>
+              <div className="mt-3">Jengjang Akademik</div>
+              <div className="mt-1 text-xs text-white">()</div>
+              <div className="flex flex-col mt-2">
+                <div className="text-sm text-lime-300">Dosen Wali</div>
+                <div className="mt-2 text-xl text-white">
+                  Dr. Ir. Aradea, S.T M.T.
+                </div>
+              </div>
             </div>
           </div>
         </div>

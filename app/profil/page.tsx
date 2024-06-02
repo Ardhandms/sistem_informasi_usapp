@@ -1,6 +1,6 @@
 import React from "react";
-import Footer from "../components/Footer";
-import HeaderProfil from "../components/header/HeaderProfil";
+import Footer from "../../components/Footer";
+import HeaderProfil from "../../components/header/HeaderProfil";
 
 function Profile() {
   return (

@@ -1,14 +1,19 @@
-import Link from "next/link";
-import React from "react";
+'use client'
+
+import Link from "next/link"
+import { useSearchParams } from "next/navigation";
 
 function Footer() {
+  const searchParams = useSearchParams();
+  const npm = searchParams.get('id');
+
   return (
     <div className="fixed inset-x-0 bottom-0">
 
       <footer className="max-w-[380px] mx-auto text-white bg-green-600">
         <nav className="w-full grid grid-cols-5 gap-2">
           <Link
-            href="/berita"
+            href=""
             className="flex flex-col justify-center items-center py-3 text-sm text-center gap-1 max-w-[60px]"
           >
             <img
@@ -20,7 +25,7 @@ function Footer() {
             <div>Berita</div>
           </Link>
           <Link
-            href="/akademik"
+            href=""
             className="flex flex-col justify-center items-center py-3 text-sm text-center gap-1 max-w-[60px]"
           >
             <img
@@ -32,7 +37,7 @@ function Footer() {
             <div>Akademik</div>
           </Link>
           <Link
-            href="/beranda"
+            href={npm ? `/beranda?id=${npm}` : '/beranda'}
             className="flex flex-col justify-center items-center py-3 text-sm text-center gap-1 max-w-[60px]"
           >
             <img
@@ -44,7 +49,7 @@ function Footer() {
             <div>Beranda</div>
           </Link>
           <Link
-            href="/pesan"
+            href=""
             className="flex flex-col justify-center items-center py-3 text-sm text-center gap-1 max-w-[60px]"
           >
             <img
@@ -56,7 +61,7 @@ function Footer() {
             <div>Pesan</div>
           </Link>
           <Link
-            href="/profil"
+            href=""
             className="flex flex-col justify-center items-center py-3 text-sm text-center gap-1 max-w-[60px]"
           >
             <img

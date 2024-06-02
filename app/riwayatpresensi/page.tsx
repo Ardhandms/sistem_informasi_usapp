@@ -1,8 +1,59 @@
-import React from "react";
-import HeaderPresensi from "../components/header/HeaderPresensi";
-import Footer from "../components/Footer";
+'use client'
+
+import HeaderPresensi from "../../components/header/HeaderPresensi"
+import Footer from "../../components/Footer"
+import { useEffect, useState, useTransition } from "react"
+import { Presensi } from "@prisma/client"
+import { useRouter, useSearchParams } from "next/navigation"
+import { LoaderCircle } from "lucide-react"
+import { getPresensiByNPM } from "@/actions/presensi"
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 function RiwayatPresensi() {
+  const [daftarPresensi, setDaftarPresensi] = useState<Presensi[] | null>(null);
+  const [filter, setFilter] = useState('');
+  const [fetching, startFetching] = useTransition();
+  const searchParams = useSearchParams();
+  const npm = searchParams.get('id');
+  const navigate = useRouter();
+
+  const handleFilter = () => {
+    if (!filter.length || !npm) return;
+    if (filter === 'all') {
+      startFetching(async () => {
+        getPresensiByNPM(npm)
+          .then((res) => {
+            if (res) setDaftarPresensi(res);
+          });
+      });
+    } else {
+      startFetching(async () => {
+        getPresensiByNPM(npm, filter)
+          .then((res) => {
+            if (res) setDaftarPresensi(res);
+          });
+      });
+    }
+  }
+
+  useEffect(() => {
+    if (npm) {
+      startFetching(async () => {
+        getPresensiByNPM(npm)
+          .then((res) => {
+            if (res) setDaftarPresensi(res);
+            else navigate.push('/');
+          });
+      });
+    } else navigate.push('/');
+  }, []);
+
   return (
     <section>
       <HeaderPresensi />
@@ -17,14 +68,28 @@ function RiwayatPresensi() {
           <p className="my-auto">Riwayat Presensi Mata Kuliah anda</p>
         </div>
         <nav className="flex gap-2 mt-3 w-full text-sm text-center">
-          <select
-            id="countries"
-            className="flex-auto bg-gray-50 border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
+          <Select onValueChange={(value) => setFilter(value)}>
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Mata Kuliah" />
+            </SelectTrigger>
+            <SelectContent className="max-h-[250px]">
+              <SelectItem value="all">Semua Mata Kuliah</SelectItem>
+              <SelectItem value="Jaringan Komputer">Jaringan Komputer</SelectItem>
+              <SelectItem value="Pemodelan dan Simulasi">Pemodelan dan Simulasi</SelectItem>
+              <SelectItem value="Keamanan Informasi">Keamanan Informasi</SelectItem>
+              <SelectItem value="Analisa Numerik">Analisa Numerik</SelectItem>
+              <SelectItem value="Pemrograman Web">Pemrograman Web</SelectItem>
+              <SelectItem value="Sistem Operasi">Sistem Operasi</SelectItem>
+              <SelectItem value="Sistem Informasi">Sistem Informasi</SelectItem>
+              <SelectItem value="Sosioteknologi Informasi">Sosioteknologi Informasi</SelectItem>
+              <SelectItem value="Etika Profesi">Etika Profesi</SelectItem>
+            </SelectContent>
+          </Select>
+          <button
+            onClick={handleFilter}
+            className="flex gap-2 justify-center items-center px-4 py-2 font-semibold text-white bg-green-600 rounded-md"
+            disabled={fetching}
           >
-            <option selected>Mata Kuliah</option>
-            <option value="CA">Canada</option>
-          </select>
-          <button className="flex gap-2 justify-center items-center px-4 py-2 font-semibold text-white bg-green-600 rounded-md">
             <span>Filter</span>
             <img
               loading="lazy"
@@ -35,8 +100,14 @@ function RiwayatPresensi() {
           </button>
         </nav>
 
-        <div className="mt-4 text-green-600 space-y-2">
-          <div className="bg-gray-100">
+        {(!daftarPresensi || fetching) && (
+          <div className="h-[250px] w-full flex justify-center items-center text-gray-400">
+            <LoaderCircle className="w-8 h-8 animate-spin" />
+          </div>
+        )}
+
+        {!fetching && daftarPresensi && !!daftarPresensi.length && (
+          <div className="mt-4 text-green-600 bg-gray-100 w-full overflow-x-auto space-y-2">
             <table className="min-w-full text-sm">
               <thead>
                 <tr>
@@ -49,23 +120,40 @@ function RiwayatPresensi() {
                   <th className="py-2 px-4 border border-gray-200 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">
                     Materi Kuliah
                   </th>
+                  <th className="py-2 px-4 border border-gray-200 text-left text-sm leading-4 text-gray-600 uppercase tracking-wider">
+                    Bukti Kuliah
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td className="py-2 px-4 border border-gray-200">Jaringan Komputer</td>
-                  <td className="py-2 px-4 border border-gray-200 whitespace-nowrap">1 - Offline</td>
-                  <td className="py-2 px-4 border border-gray-200">Routing wireless pada mikrotik</td>
-                </tr>
-                <tr>
-                  <td className="py-2 px-4 border border-gray-200">Pemodelan dan Simulasi</td>
-                  <td className="py-2 px-4 border border-gray-200 whitespace-nowrap">7 - Online</td>
-                  <td className="py-2 px-4 border border-gray-200">Sistem Pakar Keputusan </td>
-                </tr>
+                {daftarPresensi.map((presensi) => (
+                  <tr key={`presensi-${presensi.id}`}>
+                    <td className="py-2 px-4 border border-gray-200">{presensi.mataKuliah}</td>
+                    <td className="py-2 px-4 border border-gray-200 capitalize">
+                      {presensi.pertemuanKe} - {presensi.metodeKuliah}
+                    </td>
+                    <td className="py-2 px-4 border border-gray-200">
+                      {presensi.materiPerkuliahan}
+                    </td>
+                    <td className="p-2 border border-gray-200">
+                      <img
+                        src={presensi.buktiPoto}
+                        alt="bukti foto"
+                        className="w-full aspect-[4/3] object-cover"
+                      />
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
-        </div>
+        )}
+
+        {!fetching && daftarPresensi && !daftarPresensi.length && (
+          <div className="h-[250px] w-full flex justify-center items-center text-sm text-gray-400">
+            Riwayat presensi masih kosong!
+          </div>
+        )}
       </div>
       <Footer />
     </section>

@@ -1,7 +1,7 @@
 import React from "react";
 
-import Footer from "../components/Footer";
-import HeaderPresensi from "../components/header/HeaderPresensi";
+import Footer from "../../components/Footer";
+import HeaderPresensi from "../../components/header/HeaderPresensi";
 
 function Berita() {
   return (
